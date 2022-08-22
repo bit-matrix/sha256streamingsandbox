@@ -33,12 +33,12 @@ app.post("/sha256initialize", (req, res) => {
   res.send(sha256contextResult);
 });
 
-app.get("/result", (req, res) => {
-  const { text } = req.query;
-  const sha256contextResult = sha256context(text);
+// app.get("/result", (req, res) => {
+//   const { text } = req.query;
+//   const sha256contextResult = sha256context(text);
 
-  res.render("result.ejs", { result: sha256contextResult });
-});
+//   res.render("result.ejs", { result: sha256contextResult });
+// });
 
 app.listen(process.env.PORT || 3005, function () {
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
