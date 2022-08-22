@@ -19,18 +19,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
-app.set("views", path.join(__dirname, "views"));
+// app.set("views", path.join(__dirname, "views"));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.send("hello");
 });
 
 app.post("/sha256initialize", (req, res) => {
   const param1 = req.body.param1;
   const sha256contextResult = sha256streaming.sha256Initializer(param1);
-  res.send(200, sha256contextResult);
+  res.send(sha256contextResult);
 });
 
 app.get("/result", (req, res) => {
