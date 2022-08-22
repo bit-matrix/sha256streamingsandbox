@@ -6,7 +6,7 @@ const sha256streaming = require("@bitmatrix/sha256streaming");
 const https = require("https");
 const sslRedirect = require("heroku-ssl-redirect");
 const bodyParser = require("body-parser");
-const core = require("cors");
+const cors = require("cors");
 
 app.use(cors());
 
