@@ -8,8 +8,6 @@ const sslRedirect = require("heroku-ssl-redirect");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-app.use(cors());
-
 // enable ssl redirect
 app.use(sslRedirect.default());
 
@@ -18,6 +16,8 @@ app.use(bodyParser.json());
 
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cors());
 
 app.set("view engine", "ejs");
 
