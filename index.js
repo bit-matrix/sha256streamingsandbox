@@ -29,7 +29,11 @@ app.get("/", (req, res) => {
 
 app.post("/sha256initialize", (req, res) => {
   const param1 = req.body.param1;
+  console.log("param1", param1);
+
   const sha256contextResult = sha256streaming.sha256Initializer(param1);
+
+  console.log("sha256contextResult", sha256contextResult);
   res.send(sha256contextResult);
 });
 
