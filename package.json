@@ -18,7 +18,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@bitmatrix/sha256streaming": "^1.0.36",
     "axios": "^0.26.1",
+    "body-parser": "^1.20.0",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
     "heroku-ssl-redirect": "^0.1.1",
