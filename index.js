@@ -3,13 +3,13 @@ const app = express();
 const path = require("path");
 const axios = require("axios");
 const sha256streaming = require("@bitmatrix/sha256streaming");
-const https = require("https");
-const sslRedirect = require("heroku-ssl-redirect");
+// const https = require("https");
+// const sslRedirect = require("heroku-ssl-redirect");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
 // enable ssl redirect
-app.use(sslRedirect.default());
+// app.use(sslRedirect.default());
 
 // support parsing of application/json type post data
 app.use(bodyParser.json());
