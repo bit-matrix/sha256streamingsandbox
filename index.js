@@ -3,7 +3,7 @@ const app = express();
 const path = require("path");
 const axios = require("axios");
 const sha256streaming = require("@bitmatrix/sha256streaming");
-const http = require("http");
+const https = require("https");
 const sslRedirect = require("heroku-ssl-redirect");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -23,7 +23,7 @@ app.use(cors());
 
 // app.set("views", path.join(__dirname, "views"));
 
-const httpServer = http.createServer(app);
+const httpServer = https.createServer(app);
 
 httpServer.listen(process.env.PORT || 8080);
 
@@ -36,8 +36,9 @@ app.post("/sha256initialize", (req, res) => {
 
   try {
     const sha256contextResult = sha256streaming.sha256Initializer(param1);
+    console.log("sha256contextResultSuccess", sha256contextResult);
   } catch (err) {
-    console.log("sha256contextResult", err);
+    console.log("sha256contextResultFail", err);
   }
 
   res.send(sha256contextResult);
