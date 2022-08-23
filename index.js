@@ -3,13 +3,13 @@ const app = express();
 const path = require("path");
 const axios = require("axios");
 const sha256streaming = require("@bitmatrix/sha256streaming");
-// const https = require("https");
-// const sslRedirect = require("heroku-ssl-redirect");
+const http = require("http");
+const sslRedirect = require("heroku-ssl-redirect");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
 // enable ssl redirect
-// app.use(sslRedirect.default());
+app.use(sslRedirect.default());
 
 // support parsing of application/json type post data
 app.use(bodyParser.json());
@@ -23,6 +23,10 @@ app.use(cors());
 
 // app.set("views", path.join(__dirname, "views"));
 
+const httpServer = http.createServer(app);
+
+httpServer.listen(process.env.PORT || 8080);
+
 app.get("/", (req, res) => {
   res.send("hello");
 });
@@ -30,7 +34,11 @@ app.get("/", (req, res) => {
 app.post("/sha256initialize", (req, res) => {
   const param1 = req.body.param1;
 
-  const sha256contextResult = sha256streaming.sha256Initializer(param1);
+  try {
+    const sha256contextResult = sha256streaming.sha256Initializer(param1);
+  } catch (err) {
+    console.log("sha256contextResult", err);
+  }
 
   res.send(sha256contextResult);
 });
@@ -41,7 +49,3 @@ app.post("/sha256initialize", (req, res) => {
 
 //   res.render("result.ejs", { result: sha256contextResult });
 // });
-
-app.listen(process.env.PORT || 3006, function () {
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
