@@ -34,14 +34,14 @@ app.post("/sha256initialize", (req, res) => {
 
   console.log("param1", param1);
 
-  try {
-    const sha256contextResult = sha256streaming.sha256Initializer(param1);
-    console.log("sha256contextResultSuccess", sha256contextResult);
-  } catch (err) {
-    console.log("sha256contextResultFail", err);
-  }
+  // try {
+  //   const sha256contextResult = sha256streaming.sha256Initializer(param1);
+  //   console.log("sha256contextResultSuccess", sha256contextResult);
+  // } catch (err) {
+  //   console.log("sha256contextResultFail", err);
+  // }
 
-  res.send(sha256contextResult);
+  res.send("hello");
 });
 
 // app.get("/result", (req, res) => {
