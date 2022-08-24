@@ -33,6 +33,7 @@ app.post("/sha256initialize", (req, res) => {
   const param1 = req.body.param1;
 
   console.log("param1", param1);
+  console.log("Sha256streaming", Sha256streaming);
 
   const sha256contextResult = Sha256streaming.sha256Initializer(param1);
   console.log("sha256contextResultSuccess", sha256contextResult);
