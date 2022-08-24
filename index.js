@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const axios = require("axios");
-const Sha256streaming = require("@bitmatrix/sha256streaming");
+const Sha256Streaming = require("@bitmatrix/sha256streaming");
 
 const sslRedirect = require("heroku-ssl-redirect");
 const bodyParser = require("body-parser");
@@ -33,9 +33,9 @@ app.post("/sha256initialize", (req, res) => {
   const param1 = req.body.param1;
 
   console.log("param1", param1);
-  console.log("Sha256streaming", Sha256streaming.sha256Initializer[0]);
+  console.log("Sha256streaming", Sha256Streaming.sha256Initializer(param1));
 
-  const sha256contextResult = Sha256streaming.sha256Initializer(param1);
+  const sha256contextResult = Sha256Streaming.sha256Initializer(param1);
   console.log("sha256contextResultSuccess", sha256contextResult);
 
   res.send(sha256contextResult);
